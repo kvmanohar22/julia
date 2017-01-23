@@ -563,7 +563,7 @@ function with_warn{T}(f::Function, ::Type{T}, args...)
 end
 
 """
-Convert between the julia Type of a git object and
+Convert between the Julia `Type` of a git object and
 the constant integer id code for that object type.
 """
 function getobjecttype{T<:GitObject}(::Type{T})
