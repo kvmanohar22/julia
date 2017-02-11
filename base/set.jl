@@ -191,6 +191,25 @@ function unique(f::Callable, C)
 end
 
 """
+     unique!(itr)
+
+Removes recurrences of items and returns the modified collection
+"""
+function unique!(itr)
+   seen = Set{eltype(itr)}()
+	for i=1:length(itr)
+		if i <= length(itr)
+			if itr[i] in seen 
+				deleteat!(itr, i)
+			else
+				push!(seen, itr[i])
+			end
+		end
+	end
+	return itr
+end
+
+"""
     allunique(itr) -> Bool
 
 Return `true` if all values from `itr` are distinct when compared with [`isequal`](@ref).
