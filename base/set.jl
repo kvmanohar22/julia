@@ -197,13 +197,11 @@ Removes recurrences of items and returns the modified collection
 """
 function unique!(itr)
    seen = Set{eltype(itr)}()
-	for i=1:length(itr)
-		if i <= length(itr)
-			if itr[i] in seen 
-				deleteat!(itr, i)
-			else
-				push!(seen, itr[i])
-			end
+	for (i, x) in enumerate(itr)
+		if x in seen
+			deleteat!(itr, i)
+		else
+			push!(seen, x)
 		end
 	end
 	return itr
